@@ -28,3 +28,15 @@ spec:
           value: http://userprofile:80
         - name: TRIPS_API_ENDPOINT
           value: http://trips:80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tripviewer
+spec:
+  selector:
+    app: tripviewer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
