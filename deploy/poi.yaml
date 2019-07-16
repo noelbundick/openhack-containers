@@ -46,7 +46,7 @@ metadata:
   name: poi
 spec:
   selector:
-    app: poi
+    run: poi
   ports:
   - protocol: TCP
     port: 80
