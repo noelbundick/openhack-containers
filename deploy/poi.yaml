@@ -39,4 +39,16 @@ spec:
               key: server
         - name: SQL_DBNAME
           value: mydrivingDB
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: poi
+spec:
+  selector:
+    app: poi
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
           
