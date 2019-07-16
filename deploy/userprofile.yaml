@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userprofile
+  labels:
+    app: userprofile
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userprofile
+  template:
+    metadata:
+      labels:
+        app: userprofile
+    spec:
+      containers:
+      - name: userprofile
+        image: registryet76720.azurecr.io/userprofile:latest
+        env:
+          - name: SQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: sql
+                key: user
+          - name: SQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: sql
+                key: password
+          - name: SQL_SERVER
+            valueFrom:
+              secretKeyRef:
+                name: sql
+                key: server        
+          - name: SQL_DBNAME
+            valueFrom:
+              secretKeyRef:
+                name: sql
+                key: database 
+        resources:
+          limits:
+            memory: 128Mi
+            cpu: 500m
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: userprofile
+spec:
+  selector:
+    app: userprofile
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
