@@ -19,28 +19,28 @@ spec:
         image: registryet76720.azurecr.io/poi:latest
         ports:
         - containerPort: 80
+        volumeMounts:
+          - name: keyvaultflexvolume
+            mountPath: /secrets
+            readOnly: true
         resources:
           limits:
             memory: 128Mi
             cpu: 500m
-        env:
-        - name: SQL_USER
-          valueFrom:
-            secretKeyRef:
-              name: sql
-              key: user
-        - name: SQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: sql
-              key: password
-        - name: SQL_SERVER
-          valueFrom:
-            secretKeyRef:
-              name: sql
-              key: server
-        - name: SQL_DBNAME
-          value: mydrivingDB
+      volumes:
+        - name: keyvaultflexvolume
+          flexVolume:
+            driver: "azure/kv"
+            options:
+              usepodidentity: "true"
+              keyvaultname: "bestteam"
+              keyvaultobjectnames: "SQLUSER;SQLPASSWORD;SQLSERVER;SQLDBNAME"
+              keyvaultobjectaliases: "SQL_USER;SQL_PASSWORD;SQL_SERVER;SQL_DBNAME"
+              keyvaultobjecttypes: secret;secret;secret;secret
+              keyvaultobjectversions: ""
+              resourcegroup: "teamResources"
+              subscriptionid: "b59213bd-a592-44a1-8a94-b56694e27536"
+              tenantid: "2a41c9ac-10a5-4984-ad23-e13a5018fc2e"
 ---
 apiVersion: v1
 kind: Service
