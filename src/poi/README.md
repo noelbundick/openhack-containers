@@ -26,7 +26,7 @@ The following paths must be allowed by any network appliance or gateway that is 
 |---------|-------------------------------|---------------------------------------|
 | GET     | /swagger/docs/poi             | Required by the OpenAPI controller    |
 
-## Configuration
+## Configuration - **
 
 The POI (Points Of Interest) API is configured via the variables in the table below.
 
