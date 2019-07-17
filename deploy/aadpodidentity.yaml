@@ -1,0 +1,8 @@
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+  name: bestteampodidentity
+spec:
+  type: 0
+  ResourceID: /subscriptions/b59213bd-a592-44a1-8a94-b56694e27536/resourcegroups/MC_teamResources_BestTeamAKS_southcentralus/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AKSIdentity
+  ClientID: 767613d3-ad55-4d93-bb23-db489fe6459f

@@ -12,66 +12,6 @@ az ad sp create --id $serverApplicationId
 # Get the service principal secret
 serverApplicationSecret=$(az ad sp credential reset --name $serverApplicationId --credential-description "AKSPassword" --query password -o tsv)
 
-
-
-
-{
-  "accountEnabled": "True",
-  "addIns": [],
-  "alternativeNames": [],
-  "appDisplayName": "BestTeamAKSServer",
-  "appId": "0a34ee37-e75e-47c8-8ef9-4e0d6ec170e2",
-  "appOwnerTenantId": "2a41c9ac-10a5-4984-ad23-e13a5018fc2e",
-  "appRoleAssignmentRequired": false,
-  "appRoles": [],
-  "applicationTemplateId": null,
-  "deletionTimestamp": null,
-  "displayName": "BestTeamAKSServer",
-  "errorUrl": null,
-  "homepage": null,
-  "informationalUrls": {
-    "marketing": null,
-    "privacy": null,
-    "support": null,
-    "termsOfService": null
-  },
-  "keyCredentials": [],
-  "logoutUrl": null,
-  "notificationEmailAddresses": [],
-  "oauth2Permissions": [
-    {
-      "adminConsentDescription": "Allow the application to access BestTeamAKSServer on behalf of the signed-in user.",
-      "adminConsentDisplayName": "Access BestTeamAKSServer",
-      "id": "c1c98aa5-e109-4faa-b834-4a9995699846",
-      "isEnabled": true,
-      "type": "User",
-      "userConsentDescription": "Allow the application to access BestTeamAKSServer on your behalf.",
-      "userConsentDisplayName": "Access BestTeamAKSServer",
-      "value": "user_impersonation"
-    }
-  ],
-   "objectId": "60cb6498-dc41-46b6-a064-170f696081e0",
-  "objectType": "ServicePrincipal",
-  "odata.metadata": "https://graph.windows.net/2a41c9ac-10a5-4984-ad23-e13a5018fc2e/$metadata#directoryObjects/@Element",
-  "odata.type": "Microsoft.DirectoryServices.ServicePrincipal",
-  "passwordCredentials": [],
-  "preferredSingleSignOnMode": null,
-  "preferredTokenSigningKeyEndDateTime": null,
-  "preferredTokenSigningKeyThumbprint": null,
-  "publisherName": "Opsgility LLC-PRD",
-  "replyUrls": [],
-  "samlMetadataUrl": null,
-  "samlSingleSignOnSettings": null,
-  "servicePrincipalNames": [
-    "0a34ee37-e75e-47c8-8ef9-4e0d6ec170e2",
-    "https://BestTeamAKSServer"
-  ],
-  "servicePrincipalType": "Application",
-  "signInAudience": "AzureADMyOrg",
-  "tags": [],
-  "tokenEncryptionKeyId": null
-}
-
 az ad app permission add --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 
 az ad app permission add --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000 --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role

@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: trips
+        aadpodidbinding: backend
     spec:
       containers:
       - name: trips

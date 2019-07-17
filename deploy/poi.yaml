@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         run: poi
+        aadpodidbinding: backend
     spec:
       containers:
       - name: poi

@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: userprofile
+        aadpodidbinding: backend
     spec:
       containers:
       - name: userprofile
