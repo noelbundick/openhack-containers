@@ -6,7 +6,6 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
   - http:
@@ -27,3 +26,35 @@ spec:
           serviceName: poi
           servicePort: 80
         path: /api/poi
+      - backend:
+          serviceName: trips
+          servicePort: 80
+        path: /api/healthcheck/trips
+      - backend:
+          serviceName: userprofile
+          servicePort: 80
+        path: /api/healthcheck/user
+      - backend:
+          serviceName: poi
+          servicePort: 80
+        path: /api/healthcheck/poi
+      - backend:
+          serviceName: user-java
+          servicePort: 80
+        path: /api/healthcheck/user-java
+      - backend:
+          serviceName: trips
+          servicePort: 80
+        path: /api/docs/trips
+      - backend:
+          serviceName: userprofile
+          servicePort: 80
+        path: /api/docs/user
+      - backend:
+          serviceName: poi
+          servicePort: 80
+        path: /api/docs/poi
+      - backend:
+          serviceName: user-java
+          servicePort: 80
+        path: /api/docs/user-java
