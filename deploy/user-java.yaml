@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-java
+  namespace: api-namespace
   labels:
     app: user-java
 spec:
@@ -48,6 +49,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: api-namespace
   name: user-java
 spec:
   selector:

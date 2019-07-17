@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tripviewer-deployment
+  namespace: tripviewer-namespace
   labels:
     app: tripviewer
 spec:
@@ -33,6 +34,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tripviewer
+  namespace: tripviewer-namespace
 spec:
   selector:
     app: tripviewer

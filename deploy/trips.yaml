@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: trips
+  namespace: api-namespace
   labels:
     app: trips
 spec:
@@ -49,6 +50,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: trips
+  namespace: api-namespace
 spec:
   selector:
     app: trips
