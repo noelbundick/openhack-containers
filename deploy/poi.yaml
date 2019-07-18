@@ -13,6 +13,7 @@ spec:
       labels:
         run: poi
         aadpodidbinding: backend
+        istio-injection: enabled
     spec:
       containers:
       - name: poi

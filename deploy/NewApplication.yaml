@@ -18,13 +18,14 @@ spec:
       - image: "registryet76720.azurecr.io/insurance:1.0"
         imagePullPolicy: Always
         name: insurance
+        args: ["-memory-sleep-max=300"]
         ports:
         - containerPort: 8081
           name: http
           protocol: TCP
         resources:
           limits:
-            memory: 256Mi
+            memory: 2Gi
             cpu: 500m
 ---
 apiVersion: v1

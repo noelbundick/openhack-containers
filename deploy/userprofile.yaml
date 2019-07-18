@@ -15,6 +15,7 @@ spec:
       labels:
         app: userprofile
         aadpodidbinding: backend
+        istio-injection: enabled
     spec:
       containers:
       - name: userprofile
