@@ -1,0 +1,55 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin
+  namespace: tripviewer-namespace
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - httpbin-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        port:
+          number: 80
+        host: tripviewer
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin2
+  namespace: api-namespace
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - httpbin-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /api/trip
+    - uri:
+        prefix:  /api/healthcheck/trips
+    - uri:
+        prefix: /api/docs/trips
+    route:
+    - destination:
+        port:
+          number: 80
+        host: trips
+  - match:
+    - uri:
+        prefix: /api/user
+    - uri:
+        prefix:  /api/healthcheck/user
+    - uri:
+        prefix: /api/docs/user
+    route:
+    - destination:
+        port:
+          number: 80
+        host: userprofile
